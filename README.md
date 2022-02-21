@@ -13,6 +13,7 @@ This script is responsible for resizing exsisting images stored in the Azure Blo
 ## Run using container
 ### Prerequisites
  - Docker
+### Instructions
 **Warning: Transfer costs may be high if you run this script on your local machine**
  - Build a new image using the following command
     ```bash
