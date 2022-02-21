@@ -4,6 +4,8 @@ const sharp = require('sharp');
 const stream = require('stream');
 require('dotenv').config();
 
+console.log('Start');
+
 const ONE_MEGABYTE = 1024 * 1024;
 const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
 
@@ -50,9 +52,17 @@ const compressAllImages = async () => {
 
 const startScript = async () => {
     try {
-        console.log('Script started...');
-        await compressAllImages();
-        console.log('Job completed!');
+        console.log(process.env.CONNECTION_STRING);
+        console.log(process.env.DESIRED_WIDTH);
+        if(!process.env.CONNECTION_STRING) {
+            console.error('Please specify the CONNECTION_STRING environment variable');
+        } else if (!process.env.DESIRED_WIDTH) {
+            console.error('Please specify the DESIRED_WIDTH environment variable');
+        } else {
+            console.log('Script started...');
+            await compressAllImages();
+            console.log('Job completed!');
+        }
     } catch(e) {
         console.error(e.message);
         console.log('Job failed!');
