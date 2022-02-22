@@ -77,7 +77,7 @@ const startScript = async () => {
         if(!process.env.CONNECTION_STRING) {
             console.error('Please specify the CONNECTION_STRING environment variable');
         } else if (!process.env.IMAGES_PATH) {
-            console.error('Please specify the DESIRED_WIDTH environment variable');
+            console.error('Please specify the IMAGES_PATH environment variable');
         } else {
             // run script
             console.log('Script started...');

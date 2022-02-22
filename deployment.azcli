@@ -1,0 +1,21 @@
+resourceGroupName="rg-dominikg-tests"
+location="germanywestcentral"
+registryName="dominiktestsacr"
+imageNameAndTag="imagecompression:0.2"
+blobStorageAccount="chmstrgdominik"
+containerName="dominiktestcontainer"
+imagesPath="/test/*-low.png"
+
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
+acrUsername=$(az acr credential show -n $registryName --query "username" --output tsv | sed -e "s/\r//g")
+acrPass=$(az acr credential show -n $registryName --query "passwords[0].value" --output tsv | sed -e "s/\r//g")
+
+az container create \
+    --resource-group $resourceGroupName \
+    --name $containerName \
+    --image $registryName.azurecr.io/$imageNameAndTag \
+    --restart-policy Never \
+    --environment-variables 'CONNECTION_STRING'="$storageConnectionString" 'IMAGES_PATH'="$imagesPath" \
+    --registry-login-server $registryName.azurecr.io \
+    --registry-username $acrUsername \
+    --registry-password $acrPass

@@ -1,0 +1,12 @@
+resourceGroupName="rg-dominikg-tests"
+location="germanywestcentral"
+registryName="dominiktestsacr"
+imageNameAndTag="imagecompression:0.2"
+
+az acr create --resource-group $resourceGroupName \
+  --name $registryName --sku Basic
+
+az acr login --name $registryName
+docker build -t $registryName.azurecr.io/$imageNameAndTag .
+docker push $registryName.azurecr.io/$imageNameAndTag
+az acr update -n  $registryName --admin-enabled true
