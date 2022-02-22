@@ -36,7 +36,7 @@ const compressAllImages = async () => {
         }
         
         // check if the path matches regex
-        if(!`${container.name}/${blob.name}`.match(regex)) {
+        if(!filename.match(regex)) {
             console.log('Not matched! Skipping...');
             continue;
         }
