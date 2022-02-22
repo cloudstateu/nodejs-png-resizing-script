@@ -1,6 +1,20 @@
 # Images resizing script
 This script is responsible for resizing exsisting images stored in the Azure Blob Storage.
 
+## Images path regular expressions
+ - Use `*` to math all files in current directory
+ - Use `**` to math everything in current and children directory
+
+### Example
+#### Test case
+ - `/container/**/test/*`  
+#### Would match:
+ - `/container/1/2/3/test/image.png`
+ - `/container/3/test/image.png`
+#### Would not match:
+ - `/container/1/2/3/image.png` 
+ - `/container/1/test/test2/image.png` 
+
 ## Run script form cli
 ### Prerequisites
  - nodejs `v17.5.0`
@@ -22,7 +36,7 @@ This script is responsible for resizing exsisting images stored in the Azure Blo
  - Run your container (using cli method)
     ```bash
         docker run \
-            -e DESIRED_WIDTH='<IMAGE_DESIRED_WIDTH>' \
+            -e IMAGES_PATH='<IMAGES_PATH>' \
             -e CONNECTION_STRING='<BLOB_CONNECTION_STRING>' \
             --rm <repository-name>/imagecompression:<version>
     ```
