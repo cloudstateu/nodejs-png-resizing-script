@@ -48,4 +48,6 @@ Modify parameters in the [pre-deployment.azcli](pre-deployment.azcli) file:
 |-----|-----------|
 | `resourceGroupName` | specifies the resource group where ACR should be deployed
 | `location` | specifies the Azure region where solution would be deployed |
-| ``
+| `registryName` | specifies name of the ACR |
+| `imageNameAndTag` | specifies desired name and tag of the image i.e `imagecompression:0.1` |
+
