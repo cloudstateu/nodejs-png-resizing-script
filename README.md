@@ -48,7 +48,7 @@ This script is responsible for resizing exsisting images stored in the Azure Blo
 | param name | description |
 |-----|-----------|
 | `resourceGroupName` | specifies the resource group where ACR should be deployed
-| `location` | specifies the Azure region where solution would be deployed |
+| `location` | specifies the Azure region where the solution would be deployed |
 | `registryName` | specifies name of the ACR |
 | `imageNameAndTag` | specifies desired name and tag of the image i.e `imagecompression:0.1` |
 
@@ -60,7 +60,7 @@ This script is responsible for resizing exsisting images stored in the Azure Blo
 | param name | description |
 |-|-|
 | `resourceGroupName` | specifies the resource group where container instance should be deployed |
-| `location` | specifies the Azure region where solution would be deployed |
+| `location` | specifies the Azure region where the solution would be deployed |
 | `registryName` | name of the registry created in pre-deployment step |
 | `imageNameAndTag` | name and tag of the image crated in pre-deployment step |
 | `blobStorageAccount` | target storage account |
