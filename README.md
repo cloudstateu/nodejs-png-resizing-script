@@ -43,7 +43,8 @@ This script is responsible for resizing exsisting images stored in the Azure Blo
 
 ## Run using container instances on Azure cloud
 ### Pre deployment (run only once):
-Modify parameters in the [pre-deployment.azcli](pre-deployment.azcli) file:  
+1. Modify parameters in the [pre-deployment.azcli](pre-deployment.azcli) file:  
+
 | param name | description |
 |-----|-----------|
 | `resourceGroupName` | specifies the resource group where ACR should be deployed
@@ -51,3 +52,19 @@ Modify parameters in the [pre-deployment.azcli](pre-deployment.azcli) file:
 | `registryName` | specifies name of the ACR |
 | `imageNameAndTag` | specifies desired name and tag of the image i.e `imagecompression:0.1` |
 
+2. Deploy resources using [pre-deployment.azcli](pre-deployment.azcli) commands
+
+### Deployment (run each time you want start a new job)
+1.  Modify parameters in the [deployment.azcli](deployment.azcli) file:  
+
+| param name | description |
+|-|-|
+| `resourceGroupName` | specifies the resource group where container instance should be deployed |
+| `location` | specifies the Azure region where solution would be deployed |
+| `registryName` | name of the registry created in pre-deployment step |
+| `imageNameAndTag` | name and tag of the image crated in pre-deployment step |
+| `blobStorageAccount` | target storage account |
+| `containerName` | name of the container instance |
+| `imagesPath` | path to images which should be compressed |
+
+2. Deploy resources using [deployment.azcli](deployment.azcli) commands
