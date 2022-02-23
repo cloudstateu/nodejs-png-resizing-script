@@ -40,3 +40,12 @@ This script is responsible for resizing exsisting images stored in the Azure Blo
             -e CONNECTION_STRING='<BLOB_CONNECTION_STRING>' \
             --rm <repository-name>/imagecompression:<version>
     ```
+
+## Run using container instances on Azure cloud
+### Pre deployment (run only once):
+Modify parameters in the [pre-deployment.azcli](pre-deployment.azcli) file:  
+| param name | description |
+|-----|-----------|
+| `resourceGroupName` | specifies the resource group where ACR should be deployed
+| `location` | specifies the Azure region where solution would be deployed |
+| ``
